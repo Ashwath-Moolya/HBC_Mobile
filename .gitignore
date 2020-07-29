@@ -1,3 +1,7 @@
-.flipkart7.apk
-.flipkart9s.apk
+# IDE Specific
+.DS_Store
+.vscode/
+.idea/
+flipkart7.apk
+flipkart9.apk
 Results/
