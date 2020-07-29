@@ -6,7 +6,7 @@ Search for the Desired Product
     
     FOR  ${i}  IN RANGE  1  100
         ${mouse1} =  Get Text  ${item1}
-        ${mouse2} =  Get Text  ${item1}
+        ${mouse2} =  Get Text  ${item2}
         Log to Console  ${mouse1}
         Log to Console  ${mouse2}
         RUN KEYWORD IF  "${mouse1}" == "${search_item}"  Click Element  ${item1}

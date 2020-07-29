@@ -1,4 +1,2 @@
 robotframework-appiumlibrary==1.5.0.4
 robotframework==3.1.2
-mykonos-1.5.4 
-uiautomator-0.3.6

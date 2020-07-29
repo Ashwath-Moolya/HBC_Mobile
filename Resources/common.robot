@@ -1,9 +1,10 @@
 *** Keywords ***
 
 Begin Mobile Test
-    Open Application    ${server}    platformName=${platform}    platformVersion=${platform_version}    deviceName=${device}    automationName=${appium}    appActivity=${app_activity}    appPackage=${app_package}
-    
-#app=${apkPath}
+    Open Application    ${server}    platformName=${platform}    platformVersion=${platform_version}    deviceName=${device}    automationName=${appium}    appActivity=${app_activity}    appPackage=${app_package}    uiautomator2ServerInstallTimeout=50000
+    sleep  10s
+    Login to flipkart
+#app=${apkPath}    appActivity=${app_activity}    appPackage=${app_package}
 
 Launch the Application
     Launch Application
@@ -43,8 +44,12 @@ Add Desired Product to the kart
     sleep  4s
     Click Text  ${add_kart}
     sleep  4s
-    Click Element  ${pick_address}
-
+    Click Element  ${close_freq}
+    sleep  4s
+    #Click Element  ${pick_address}
+    Click Text  ${go_kart}
+    sleep  4s
+    
 Quit flipkart Application
     Quit Application
 

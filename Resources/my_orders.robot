@@ -7,6 +7,7 @@ Verify cancelled item listed
     sleep  4s
     Verify Screen Content  ${content_canceled}
     Log to Console  Test case Pass!!
+    sleep  4s
 
 Visit back to main menu
     Click Element  ${menu}
