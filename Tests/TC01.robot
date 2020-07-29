@@ -29,4 +29,4 @@ Verify the Cancelled item in My Orders
     Given User is allowed to launch Flipkart app
     When User naviggates to My_Order Section from Menu
     Then Cancelled item should be listed in the My Order Section  ${cancel_content}
-    And Visit back to main menus
+    And Visit back to main menu
