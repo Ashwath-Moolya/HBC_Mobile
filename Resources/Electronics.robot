@@ -1,6 +1,6 @@
 *** Keywords ***
 
-Search for the Desired Product
+User Searches for the Desired Product
     [Arguments]    ${search_item}
     #${mob_item2} =  xpath=//android.widget.FrameLayout[@resource-id="com.flipkart.android:id/main_content"]/android.widget.FrameLayout/android.view.ViewGroup[1]/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.TextView[2]
     

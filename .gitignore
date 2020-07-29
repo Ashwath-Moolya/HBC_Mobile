@@ -1,4 +1,7 @@
+# IDE Specific
+.DS_Store
+.vscode/
+.idea/
 flipkart7.apk
 flipkart9.apk
 Results/
-.DS_Store/

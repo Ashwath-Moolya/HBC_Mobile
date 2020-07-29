@@ -1,16 +1,16 @@
 *** Keywords ***
 
-Go to My_Order Section from Menu
+User naviggates to My_Order Section from Menu
     Go to Home Menu
     sleep  4s
     Click Text  ${my_order}
 
-Go to Electronics Section from Menu
+User navigates to the Electronics Section from Menu
     Go to Home Menu
     sleep  4s
     Click Text  ${electronis}
 
-Go to Mouse Sub_Section from Computer Accessories
+navigates to Mouse Sub_Section from Computer Accessories
     sleep  4s
     Click Element  ${comp_accessories}
     sleep  3s
