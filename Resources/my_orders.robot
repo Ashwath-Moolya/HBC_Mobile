@@ -1,6 +1,6 @@
 *** Keywords ***
 
-Verify cancelled item listed
+Cancelled item should be listed in the My Order Section
     [Arguments]    ${cancel_item_name}
     Verify Screen Content  ${cancel_item_name}
     Click Element  ${cancel_item1}
