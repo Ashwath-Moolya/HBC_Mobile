@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.1 (Python 3.7.6 on darwin)" generated="20200830 23:24:31.732" rpa="false">
+<suite id="s1" name="Tests" source="/Users/nradhakrishnan/RobotWorkspace/Mobile_RF_Emulator/Tests">
+<suite id="s1-s1" name="Testcase" source="/Users/nradhakrishnan/RobotWorkspace/Mobile_RF_Emulator/Tests/testcase.robot">
+<test id="s1-s1-t1" name="Open flipkart Application">
+<kw name="launch my flipkart app">
+<kw name="Open Application" library="AppiumLibrary">
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |</doc>
+<arguments>
+<arg>${server_fk}</arg>
+<arg>platformName=${fk_pltname}</arg>
+<arg>platformVersion=${fk_versn}</arg>
+<arg>deviceName=${fk_device}</arg>
+<arg>app=${fk_apkPath}</arg>
+</arguments>
+<status status="PASS" starttime="20200830 23:24:31.869" endtime="20200830 23:24:48.740"></status>
+</kw>
+<status status="PASS" starttime="20200830 23:24:31.868" endtime="20200830 23:24:48.740"></status>
+</kw>
+<kw name="Pass on your credentials">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>8s</arg>
+</arguments>
+<msg timestamp="20200830 23:24:56.744" level="INFO">Slept 8 seconds</msg>
+<status status="PASS" starttime="20200830 23:24:48.741" endtime="20200830 23:24:56.744"></status>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${fk_no}</arg>
+<arg>${no}</arg>
+</arguments>
+<msg timestamp="20200830 23:24:56.746" level="INFO">Typing text '9944313864' into text field 'id=com.flipkart.android:id/mobileNo'</msg>
+<status status="PASS" starttime="20200830 23:24:56.744" endtime="20200830 23:24:57.086"></status>
+</kw>
+<kw name="Click Text" library="AppiumLibrary">
+<doc>Click text identified by ``text``.</doc>
+<arguments>
+<arg>${fk_sign}</arg>
+</arguments>
+<status status="PASS" starttime="20200830 23:24:57.086" endtime="20200830 23:24:58.385"></status>
+</kw>
+<status status="PASS" starttime="20200830 23:24:48.741" endtime="20200830 23:24:58.386"></status>
+</kw>
+<status status="PASS" starttime="20200830 23:24:31.868" endtime="20200830 23:24:58.386" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20200830 23:24:31.761" endtime="20200830 23:24:58.387"></status>
+</suite>
+<status status="PASS" starttime="20200830 23:24:31.739" endtime="20200830 23:24:58.391"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" id="s1-s1" name="Testcase">Tests.Testcase</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

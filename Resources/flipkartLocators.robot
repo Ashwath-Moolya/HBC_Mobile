@@ -17,7 +17,7 @@ ${platform}  Android
 ${app_package} =  com.flipkart.android
 ${app_activity} =  com.flipkart.android.SplashActivity
 ${appium}  appium
-#s${apkPath}  /Users/nradhakrishnan/RobotWorkspace/Mobile_RF_Emulator/flipkart.apk
+${apkPath}  /Users/nradhakrishnan/RobotWorkspace/Mobile_RF_Emulator/flipkart.apk
 #${apkPath}  /Users/nradhakrishnan/RobotWorkspace/Mobile_RF/flipkart9.apk
 
 #Login using Mobile details
