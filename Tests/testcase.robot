@@ -3,6 +3,7 @@ Library    AppiumLibrary
 
 *** Test Cases ***
 Open flipkart Application
+    [Tags]    sanity
     launch my flipkart app
     Pass on your credentials
 
@@ -22,7 +23,7 @@ ${fk_pltname} =  android
 ${fk_versn} =  9
 ${fk_no} =  id=com.flipkart.android:id/mobileNo
 ${fk_package} =  com.flipkart.android
-${fk_act} =  com.flipkart.android.SplashActivity
+${fk_act} =  com.flipkart.android.SplashActivity    
 ${no} =  9944313864
 ${fk_sign} =  SIGN UP
 ${fk_apkPath}  ${CURDIR}/../flipkart.apk
