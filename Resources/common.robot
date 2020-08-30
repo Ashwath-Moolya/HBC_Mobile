@@ -1,6 +1,6 @@
 *** Keywords ***
 
-Begin Mobile Test
+User is allowed to launch Flipkart app
     Open Application    ${server}    platformName=${platform}    platformVersion=${platform_version}    deviceName=${device}    automationName=${appium}    appActivity=${app_activity}    appPackage=${app_package}    uiautomator2ServerInstallTimeout=50000
     sleep  10s
     Login to flipkart
@@ -40,7 +40,7 @@ Go to Home Menu
     Verify Screen Element  ${home_page}
     Click Element  ${menu}
 
-Add Desired Product to the kart
+User adds the desired product to the cart successfully
     sleep  4s
     Click Text  ${add_kart}
     sleep  4s

@@ -16,17 +16,17 @@ Resource  ../Resources/Electronics.robot
 
 *** Test Cases ***
 
-User should be able to Place Order
+User should be able to Place their desired product in the Cart
     [Tags]    order
-    Begin Mobile Test
-    Go to Electronics Section from Menu
-    Go to Mouse Sub_Section from Computer Accessories
-    Search for the Desired Product  ${Item_Name}
-    Add Desired Product to the kart
+    Given User is allowed to launch Flipkart app
+    When User navigates to the Electronics Section from Menu
+    And navigates to Mouse Sub_Section from Computer Accessories
+    And User Searches for the Desired Product  ${Item_Name}
+    Then User adds the desired product to the cart successfully
 
-Verify the Cancelled item in My Order
+Verify the Cancelled item in My Orders
     [Tags]    cancel
-    Begin Mobile Test
-    Go to My_Order Section from Menu
-    Verify cancelled item listed  ${cancel_content}
-    Visit back to main menu
+    Given User is allowed to launch Flipkart app
+    When User naviggates to My_Order Section from Menu
+    Then Cancelled item should be listed in the My Order Section  ${cancel_content}
+    And Visit back to main menu
