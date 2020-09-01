@@ -23,5 +23,5 @@ jobs:
         api-level: ${{ matrix.api-level }}
         target: ${{ matrix.target }}
         arch: x86
-        profile: test
+        #profile: test
         script: bash ${{ github.workspace }}/run.sh
