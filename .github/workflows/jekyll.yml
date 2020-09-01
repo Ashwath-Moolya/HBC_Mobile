@@ -14,9 +14,10 @@ jobs:
         api-level: [26]
         target: [google_apis]
     steps:
-    - name: checkout
-      uses: actions/checkout@v2
-      uses: subosito/flutter-action@v1
+    - uses: actions/checkout@v1
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: 'beta'
     - name: run tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
@@ -24,4 +25,4 @@ jobs:
         target: ${{ matrix.target }}
         arch: x86
         profile: Nexus 6
-        script: bash ${{ github.workspace }}/run.sh
+        script: bash ${{ github.workspace }}/run.sh offline
