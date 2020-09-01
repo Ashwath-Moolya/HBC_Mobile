@@ -30,4 +30,6 @@ jobs:
         target: ${{ matrix.target }}
         arch: x86
         profile: Nexus 6
-        script: robot -d Reports -i sanity Tests
+        script: 
+          adb devices
+          robot -d Reports -i sanity Tests
