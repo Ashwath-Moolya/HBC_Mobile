@@ -15,7 +15,7 @@ launch my flipkart app
 
 Pass on your credentials
     Log to Console  Providing Credentials
-    Sleep  8s
+    Sleep  7s
     Input Text  ${fk_no}  ${no}
     Log to Console  Mobile Number
     Click Text  ${fk_sign}
