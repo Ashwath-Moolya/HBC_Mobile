@@ -24,7 +24,7 @@ Pass on your credentials
 *** Variables ***
 ${server_fk} =  http://localhost:4723/wd/hub
 ${fk_pltname} =  android
-${fk_versn} =  8.1
+${fk_versn} =  8
 ${fk_no} =  id=com.flipkart.android:id/mobileNo
 ${fk_package} =  com.flipkart.android
 ${fk_act} =  com.flipkart.android.SplashActivity    

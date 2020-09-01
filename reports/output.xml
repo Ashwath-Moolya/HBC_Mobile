@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.1 (Python 3.7.6 on darwin)" generated="20200831 01:18:07.235" rpa="false">
+<robot generator="Robot 3.2.1 (Python 3.7.6 on darwin)" generated="20200902 02:54:18.632" rpa="false">
 <suite id="s1" name="Tests" source="/Users/nradhakrishnan/RobotWorkspace/Mobile_RF_Emulator/Tests">
 <suite id="s1-s1" name="Testcase" source="/Users/nradhakrishnan/RobotWorkspace/Mobile_RF_Emulator/Tests/testcase.robot">
 <test id="s1-s1-t1" name="Open flipkart Application">
@@ -18,59 +18,38 @@ Please check https://github.com/appium/appium/blob/master/docs/en/writing-runnin
 <arg>deviceName=${fk_device}</arg>
 <arg>app=${fk_apkPath}</arg>
 </arguments>
-<status status="PASS" starttime="20200831 01:18:07.459" endtime="20200831 01:18:23.665"></status>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<status status="FAIL" starttime="20200902 02:54:23.580" endtime="20200902 02:54:23.581"></status>
 </kw>
-<status status="PASS" starttime="20200831 01:18:07.458" endtime="20200831 01:18:23.665"></status>
+<msg timestamp="20200902 02:54:23.583" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Execution terminated by signal</msg>
+<status status="FAIL" starttime="20200902 02:54:18.771" endtime="20200902 02:54:23.584"></status>
 </kw>
-<kw name="Pass on your credentials">
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
-<arguments>
-<arg>8s</arg>
-</arguments>
-<msg timestamp="20200831 01:18:31.670" level="INFO">Slept 8 seconds</msg>
-<status status="PASS" starttime="20200831 01:18:23.669" endtime="20200831 01:18:31.670"></status>
-</kw>
-<kw name="Input Text" library="AppiumLibrary">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<arguments>
-<arg>${fk_no}</arg>
-<arg>${no}</arg>
-</arguments>
-<msg timestamp="20200831 01:18:31.672" level="INFO">Typing text '9944313864' into text field 'id=com.flipkart.android:id/mobileNo'</msg>
-<status status="PASS" starttime="20200831 01:18:31.670" endtime="20200831 01:18:31.855"></status>
-</kw>
-<kw name="Click Text" library="AppiumLibrary">
-<doc>Click text identified by ``text``.</doc>
-<arguments>
-<arg>${fk_sign}</arg>
-</arguments>
-<status status="PASS" starttime="20200831 01:18:31.856" endtime="20200831 01:18:32.955"></status>
-</kw>
-<status status="PASS" starttime="20200831 01:18:23.666" endtime="20200831 01:18:32.955"></status>
+<status status="FAIL" starttime="20200902 02:54:18.771" endtime="20200902 02:54:23.584"></status>
 </kw>
 <tags>
 <tag>sanity</tag>
 </tags>
-<status status="PASS" starttime="20200831 01:18:07.458" endtime="20200831 01:18:32.956" critical="yes"></status>
+<status status="FAIL" starttime="20200902 02:54:18.770" endtime="20200902 02:54:23.587" critical="yes">Execution terminated by signal</status>
 </test>
-<status status="PASS" starttime="20200831 01:18:07.259" endtime="20200831 01:18:32.958"></status>
+<status status="FAIL" starttime="20200902 02:54:18.660" endtime="20200902 02:54:23.589"></status>
 </suite>
-<status status="PASS" starttime="20200831 01:18:07.237" endtime="20200831 01:18:32.961"></status>
+<status status="FAIL" starttime="20200902 02:54:18.639" endtime="20200902 02:54:23.591"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0">Critical Tests</stat>
-<stat pass="1" fail="0">All Tests</stat>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0">sanity</stat>
+<stat pass="0" fail="1">sanity</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" id="s1" name="Tests">Tests</stat>
-<stat pass="1" fail="0" id="s1-s1" name="Testcase">Tests.Testcase</stat>
+<stat pass="0" fail="1" id="s1" name="Tests">Tests</stat>
+<stat pass="0" fail="1" id="s1-s1" name="Testcase">Tests.Testcase</stat>
 </suite>
 </statistics>
 <errors>
+<msg timestamp="20200902 02:54:23.583" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Execution terminated by signal</msg>
 </errors>
 </robot>
