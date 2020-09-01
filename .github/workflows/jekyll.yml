@@ -22,6 +22,6 @@ jobs:
       with:
         api-level: ${{ matrix.api-level }}
         target: ${{ matrix.target }}
-        arch: x86_64
-        profile: emulator-5554
+        arch: x86
+        profile: test
         script: bash ${{ github.workspace }}/run.sh
