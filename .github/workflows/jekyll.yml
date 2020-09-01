@@ -24,4 +24,5 @@ jobs:
         target: ${{ matrix.target }}
         arch: x86
         profile: Pixel_9
-        script: bash ${{ github.workspace }}/run.sh
+        script: ./gradlew connectedCheck
+        Run: bash run.sh
