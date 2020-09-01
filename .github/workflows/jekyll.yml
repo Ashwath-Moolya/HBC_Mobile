@@ -23,5 +23,5 @@ jobs:
         api-level: ${{ matrix.api-level }}
         target: ${{ matrix.target }}
         arch: x86
-        profile: PixelNiv_3a_XL_API_27
+        #profile: PixelNiv_3a_XL_API_27
         script: bash ${{ github.workspace }}/run.sh
