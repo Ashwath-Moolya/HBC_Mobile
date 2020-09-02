@@ -3,4 +3,8 @@ cd /bin
 npm install -g appium@1.15.1
 appium -v
 appium &
-adb devices
+
+cd /Users/nradhakrishnan/Library/Android/sdk/emulator
+ls
+emulator -list-avds
+emulator -avd Nexus_6_API_26
