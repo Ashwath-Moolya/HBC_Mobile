@@ -32,7 +32,6 @@ jobs:
     - name: Install and Run Appium Server
       run: |
         bash ./run.sh
-
     - name: run tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
@@ -40,4 +39,4 @@ jobs:
         target: ${{ matrix.target }}
         arch: x86
         profile: Nexus 6
-        script: bash ${{ github.workspace }}/robotrun.sh
+        script: robot -d reports -i sanity Tests
