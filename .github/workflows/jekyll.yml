@@ -31,6 +31,7 @@ jobs:
     - name: Install and Run Appium Server
       run: |
         bash ./run.sh
+        
     - name: run tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
