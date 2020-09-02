@@ -10,7 +10,7 @@ Open flipkart Application
 
 *** Keywords ***
 launch my flipkart app
-    Open Application  ${server_fk}  platformName=${fk_pltname}  platformVersion=${fk_versn}  deviceName=${fk_device}  app=${fk_apkPath}
+    Open Application  ${server_fk}  platformName=${fk_pltname}  platformVersion=${fk_versn}  deviceName=${fk_device}  app=${fk_apkPath}  uiautomator2ServerInstallTimeout=50000
     Log to Console  Launched Flipkart
 
 Pass on your credentials

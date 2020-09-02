@@ -1,6 +1,6 @@
 #! /bin/bash
 cd /bin
 ls
-npm install -g appium
+npm i appium@1.15.1
 appium -v
-appium &>/dev/null &
+appium &
