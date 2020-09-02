@@ -40,4 +40,4 @@ jobs:
         target: ${{ matrix.target }}
         arch: x86
         profile: Nexus 6
-        script: robot -d reports -i sanity Tests
+        script: bash ${{ github.workspace }}/robotrun.sh
