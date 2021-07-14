@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 3.2.1 (Python 3.7.6 on darwin)" name="Generator">
+<meta content="Robot Framework 3.2.2 (Python 3.7.3 on darwin)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all" type="text/css">
 /* Generic and misc styles */
@@ -579,11 +579,18 @@ function expandSuite(suite) {
     else
         expandCriticalFailed(suite);
 }
-function expandElement(item) {
+function expandElement(item, retryCount) {
+    retryCount = typeof retryCount !== 'undefined' ? retryCount : 3;
     var element = $('#' + item.id);
     var children = element.children('.children');
     // .css is faster than .show and .show w/ callback is terribly slow
     children.css({'display': 'block'});
+    // in rare cases on large logs concurrent expanding fails => retry
+    if (children.css('display') != 'block' && retryCount > 0) {
+        console.debug('expandElement '+item.id+' failed! planning retry...');
+        setTimeout(function() { expandElement(item, retryCount-1); }, 0);
+        return;
+    }
     populateChildren(item.id, children, item.childrenNames);
     element.children('.element-header').removeClass('closed');
 }
@@ -1743,25 +1750,25 @@ function stopPropagation(event) {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[1,0,26652],[[4,5,6,0,[],[1,22,26626],[],[[7,0,1,0,[],[1,129,26518],[[0,8,0,0,0,0,0,0,[1,129,16872],[[0,9,10,0,11,12,0,0,[1,130,16871],[],[]]],[]],[0,13,0,0,0,0,0,0,[1,17002,9645],[[0,14,15,0,16,17,0,0,[1,17002,8003],[],[[25005,2,18]]],[0,19,10,0,20,21,0,0,[1,25005,342],[],[[25007,2,22]]],[0,23,10,0,24,25,0,0,[1,25347,1299],[],[]]],[]]]]],[],[1,1,1,1]]],[],[],[1,1,1,1]];
+window.output["suite"] = [1,2,3,0,[],[1,0,44648],[[4,5,6,0,[],[1,29,44616],[],[[7,0,1,0,[8],[1,260,44383],[[0,9,10,0,0,0,0,0,[1,261,42289],[[0,11,12,0,13,14,0,0,[1,262,12285],[],[]],[0,15,16,0,17,18,0,0,[1,12548,1],[],[]],[0,19,16,0,20,21,0,0,[1,12549,30001],[],[[42550,2,22]]]],[]],[0,23,10,0,0,0,0,0,[1,42550,1304],[[0,24,10,0,0,25,0,0,[1,42551,1303],[[0,26,12,0,27,28,0,0,[1,42552,1299],[],[]],[0,29,16,0,30,31,0,0,[1,43852,1],[],[[43853,2,32]]],[0,29,16,0,30,33,0,0,[1,43853,0],[],[[43853,2,33]]]],[]]],[]],[0,34,12,0,35,0,0,0,[1,43855,787],[],[[44642,2,36]]]]]],[],[1,1,1,1]]],[],[],[1,1,1,1]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Tests","*/Users/nradhakrishnan/RobotWorkspace/Mobile_RF_Emulator/Tests","*../Tests","*Testcase","*/Users/nradhakrishnan/RobotWorkspace/Mobile_RF_Emulator/Tests/testcase.robot","*../Tests/testcase.robot","*Open flipkart Application","*launch my flipkart app","*Open Application","*AppiumLibrary","eNq1UU1PwzAMvfMrrJ63RlxRFmmCKxoSJ07ISbw2InUiJ93+Pi3d1A3OXPzx/N6z4uhsDpm4AALTGTDnGBzWkBhqgi6ciGGfcxgHKCQnkhaeMaMNMdRABdJx1qzjDezZSwoekD2Ew/sG3iJhIXA9uS/QCL3Qcdf0tebypFQXaj/a1qVBLUbXZGOyasBSSZRPrihidZZpK3dbGZnnfKEuq7coXWkH35j/89YKjVbZPOiKNhLYJJ5k1zw2MyRz8Ebb6abzCbWyE3tCrvArcvsHfKHiJPwWqMXtYik0pEqfo8RV+kFlbe7+CFbevQ3GgDciTmt9O1pE6ueJ5htaB7wi","*${server_fk}, platformName=${fk_pltname}, platformVersion=${fk_versn}, deviceName=${fk_device}, app=${fk_apkPath}","*Pass on your credentials","*Sleep","*BuiltIn","*<p>Pauses the test executed for the given time.\x3c/p>","*8s","*Slept 8 seconds","*Input Text","*<p>Types the given `text` into text field identified by `locator`.\x3c/p>","*${fk_no}, ${no}","*Typing text '9944313864' into text field 'id=com.flipkart.android:id/mobileNo'","*Click Text","*<p>Click text identified by <code>text\x3c/code>.\x3c/p>","*${fk_sign}"]);
+window.output["strings"] = window.output["strings"].concat(["*","*Tests","*/Users/apple/HBC_RF_Mobile/Tests","*../Tests","*Testcase","*/Users/apple/HBC_RF_Mobile/Tests/testcase.robot","*../Tests/testcase.robot","*Open hbc Application","*sanity","*User is allowed to launch hbc app","*common","*Open Application","*AppiumLibrary","eNq1UU1PwzAMvfMrrJ63RlxRFmmCKxoSJ07ISbw2InUiJ93+Pi3d1A3OXPzx/N6z4uhsDpm4AALTGTDnGBzWkBhqgi6ciGGfcxgHKCQnkhaeMaMNMdRABdJx1qzjDezZSwoekD2Ew/sG3iJhIXA9uS/QCL3Qcdf0tebypFQXaj/a1qVBLUbXZGOyasBSSZRPrihidZZpK3dbGZnnfKEuq7coXWkH35j/89YKjVbZPOiKNhLYJJ5k1zw2MyRz8Ebb6abzCbWyE3tCrvArcvsHfKHiJPwWqMXtYik0pEqfo8RV+kFlbe7+CFbevQ3GgDciTmt9O1pE6ueJ5htaB7wi","eNpNjLEOwjAMRH+FoSMDC2MGJMSEEBOMkRUMWJAmcu1IVcW/E3BA9eS7d3fdNCAX5NdykZ8g18TxABFdN/3kjJyQB0r9DPpiVg1dsFDAVjZRXVBJEaRGGoGcST+j9dkEoUIymu2hSYNHCA+4tYrPpgydgWSr/J1161W9v71LvAftw90JK74B+pBT0A==","*Log To Console","*BuiltIn","*<p>Logs the given message to the console.\x3c/p>","*Launched hbc","*Sleep","*<p>Pauses the test executed for the given time.\x3c/p>","*30s","*Slept 30 seconds","*Verify hbc home page","*Verify Screen Content","*${Home}","*Wait Until Page Contains","*<p>Waits until `text` appears on current page.\x3c/p>","*${ExpectedContent}, timeout=30s","*Log","*<p>Logs the given message with the given level.\x3c/p>","*${ExpectedContent}","*Home","*Content Found","*Log Source","*<p>Logs and returns the entire html source of the current page or frame.\x3c/p>","eNrtnF1vozgUhu/3VyAumps04Zuwo2i0ndXsrjTam+3OXlQVMuAkVgmOjNO0/35tQzKkkw8gaXECN00h5gDn8XnPsQ25iemnzy/zWHmGJEU4Gff0gdZTYBLiCCXTce/f+6+3o56SUpBEIMYJHPdeYdpTPt9M6adfbtjhMwQJIOHsVUFJBF/GqqYqYQzSdKxuvlIVgimg/AT86xWK6Gys6tqIbcwgms4o2/JcVxVWFYXbZSckGEUD1ngK6eArAXP4DbziJS2caAHCJzCFYzXE88EExzFeDVLwlGJ7kNLp5kL221IVCl/Y2VnTGWS2gpgZm4A4hfkeGP3YjtGbFjDhm6wFJUu2OcHhMt1qIPYUTDAPTm9/trNgV7nC5Ee7NCTsZrbapDCGIS3YCvAyidjNPWh97fGBO7PPffioKhFKFzF43VxY7tWdfv2GEgjImRxbNNYuz3Z9tqpndVcv7dumei6BKV6SEN6iaI+9X1E0BCFXNj8AxCcY0zZhaabbb2HJD+AgQpxQmLQMwDaCZwRXg+/szx8ELxf13b9tp2pEzAFKfE6DfULSNh4SBMVeMgHBqxSS1sBRhrXx6A3gWXI2mBXj7B46RscZGQ0wSmGW7ztMpTGZDWBqcfrZwvIyiAhYia7KvLh27O9i34n56LjpqtAye36cH9w+cB9bzbXRvzJXZwl45qPIq5Mu07CrAJJxSJOhaS0QmYvmPGrQnJ3Vp4jGsHYEZYD28yrseG9cum5lwDzHqcNrJ7G/uI94DJyschtLhWySTb/cRjANx+o9B6EIKPVBXnK8WZrRNzTt8cFx3b7hOWVL6m2Aw/1xUjVcd02YGk1MmBK+4nO3pBQn6ZdryHU8RHNxNa2zBatcywcSSSN3t6FbubuNkVHd3U2r499C6pRABEHpyTvR2s819bLD5Ri/I9J4ujgODwjakcp0uLukPDjgqHOpO6vg+pXWxkTNAivArPvN2QeJLn1oYhrmwUr4QO+Td2Iyx7SCASd9LaNIDqjeOF/GYeRiGcc+xT6BE3bArL1o3gQSDJ4QHfwHgxPT75adqnBW68MutTAqgeRgXm0quR0YoJhNDFAmENAlKUwjsJBd+DGc0CsIWIuNUBzv5KS3C5YlDywxxrxkWqw2dgrh/F7IbDmQ5bXl5YeY7tmaiLHq+luSmCMVseuIs4xarbxZNWcW2x9fQN2z5F4t4ZYbslhNPI4kOtGXK1nv8jwr70SGbo1qrNVLthxJQXAH2gnlyOSLdo7Jl+t260HBLJHm9O4lhJP7sNRPomb1QwKe0VS8GnQNi7ZrVobuVEb18UsSdUEhCuc+CvnCxeWEVXayDSnX7huazos+S2f/uU6duZI3Lr5nfi2yqj0JvDa0RvUnnsMTcV38cjrTPm1kr0PLqDEaPtMslSRPvVylfnK4mYJaptEpqNwRaXhcOXXn8cG0XR6dhswa+s8ML9quoUI7hYpm4SWXihqdip7pyTMGN1NRxxp1Kip3TNqam6uo7ZryqyjkP+jQdh0V6il0NAswuXTU7HT0PJg53ExHR47V6ajcMekaZq6j7siTXkd/C0N24bTtQirkUwhpFmFyCanVCel5MHO4J0xid0r6sY9nm16upLqm2e8lpfq5pFSrjyvBFE1QKDYumphn8VeNxLNCJldUy5M5+d2BadsTn0h3IvHlivgxma/Wiw/1HjipckT5Z2iqWK5ws2XNljRZxpxos/mFRL7rf+DiT2w="]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:27","fail":0,"label":"Critical Tests","pass":1},{"elapsed":"00:00:27","fail":0,"label":"All Tests","pass":1}],[],[{"elapsed":"00:00:27","fail":0,"id":"s1","label":"Tests","name":"Tests","pass":1},{"elapsed":"00:00:27","fail":0,"id":"s1-s1","label":"Tests.Testcase","name":"Testcase","pass":1}]];
+window.output["stats"] = [[{"elapsed":"00:00:44","fail":0,"label":"Critical Tests","pass":1},{"elapsed":"00:00:44","fail":0,"label":"All Tests","pass":1}],[{"elapsed":"00:00:44","fail":0,"label":"sanity","pass":1}],[{"elapsed":"00:00:45","fail":0,"id":"s1","label":"Tests","name":"Tests","pass":1},{"elapsed":"00:00:45","fail":0,"id":"s1-s1","label":"Tests.Testcase","name":"Testcase","pass":1}]];
 </script>
 <script type="text/javascript">
 window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1598810071739;
+window.output["baseMillis"] = 1626271714427;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 26664;
+window.output["generated"] = 44669;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -1798,12 +1805,12 @@ $(document).ready(function() {
     addErrors();
     addExecutionLog(topsuite);
     addLogLevelSelector(window.settings['minLevel'], window.settings['defaultLevel']);
-    loadAndExpandElementIds(window.output['expand_keywords']);
     if (window.location.hash) {
         makeElementVisible(window.location.hash.substring(1));
     } else {
         expandSuite(topsuite);
     }
+    setTimeout(function () { loadAndExpandElementIds(window.output['expand_keywords']); }, 100);
 });
 
 function addLogLevelSelector(minLevel, defaultLevel) {

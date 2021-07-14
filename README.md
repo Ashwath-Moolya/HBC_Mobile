@@ -50,5 +50,5 @@ Lets Start:
     "app": "/path/to/my.app"
 }
 
-  "appActivity": "com.flipkart.android.SplashActivity",
-  "appPackage": "com.flipkart.android"
+  "appActivity": "com.hbc.android.SplashActivity",
+  "appPackage": "com.hbc.android"

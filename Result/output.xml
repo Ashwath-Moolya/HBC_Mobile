@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.1 (Python 3.7.6 on darwin)" generated="20200830 23:24:31.732" rpa="false">
-<suite id="s1" name="Tests" source="/Users/nradhakrishnan/RobotWorkspace/Mobile_RF_Emulator/Tests">
-<suite id="s1-s1" name="Testcase" source="/Users/nradhakrishnan/RobotWorkspace/Mobile_RF_Emulator/Tests/testcase.robot">
-<test id="s1-s1-t1" name="Open flipkart Application">
-<kw name="launch my flipkart app">
+<robot generator="Robot 3.2.2 (Python 3.7.3 on darwin)" generated="20210714 19:38:34.426" rpa="false">
+<suite id="s1" name="Tests" source="/Users/apple/HBC_RF_Mobile/Tests">
+<suite id="s1-s1" name="Testcase" source="/Users/apple/HBC_RF_Mobile/Tests/testcase.robot">
+<test id="s1-s1-t1" name="Open hbc Application">
+<kw name="User is allowed to launch hbc app" library="common">
 <kw name="Open Application" library="AppiumLibrary">
 <doc>Opens a new application to given Appium server.
 Capabilities of appium server, Android and iOS,
@@ -12,48 +12,154 @@ Please check https://github.com/appium/appium/blob/master/docs/en/writing-runnin
 | remote_url          | Yes    | Appium server url |
 | alias               | no     | alias             |</doc>
 <arguments>
-<arg>${server_fk}</arg>
-<arg>platformName=${fk_pltname}</arg>
-<arg>platformVersion=${fk_versn}</arg>
-<arg>deviceName=${fk_device}</arg>
-<arg>app=${fk_apkPath}</arg>
+<arg>${server}</arg>
+<arg>platformName=${platform}</arg>
+<arg>platformVersion=${platform_version}</arg>
+<arg>deviceName=${device}</arg>
+<arg>automationName=${appium}</arg>
+<arg>appActivity=${app_activity}</arg>
+<arg>appPackage=${app_package}</arg>
+<arg>appWaitDuration=50000</arg>
+<arg>appWaitForLaunch=true</arg>
 </arguments>
-<status status="PASS" starttime="20200830 23:24:31.869" endtime="20200830 23:24:48.740"></status>
+<status status="PASS" starttime="20210714 19:38:34.689" endtime="20210714 19:38:46.974"></status>
 </kw>
-<status status="PASS" starttime="20200830 23:24:31.868" endtime="20200830 23:24:48.740"></status>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Launched hbc</arg>
+</arguments>
+<status status="PASS" starttime="20210714 19:38:46.975" endtime="20210714 19:38:46.976"></status>
 </kw>
-<kw name="Pass on your credentials">
 <kw name="Sleep" library="BuiltIn">
 <doc>Pauses the test executed for the given time.</doc>
 <arguments>
-<arg>8s</arg>
+<arg>30s</arg>
 </arguments>
-<msg timestamp="20200830 23:24:56.744" level="INFO">Slept 8 seconds</msg>
-<status status="PASS" starttime="20200830 23:24:48.741" endtime="20200830 23:24:56.744"></status>
+<msg timestamp="20210714 19:39:16.977" level="INFO">Slept 30 seconds</msg>
+<status status="PASS" starttime="20210714 19:38:46.976" endtime="20210714 19:39:16.977"></status>
 </kw>
-<kw name="Input Text" library="AppiumLibrary">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
+<status status="PASS" starttime="20210714 19:38:34.688" endtime="20210714 19:39:16.977"></status>
+</kw>
+<kw name="Verify hbc home page" library="common">
+<kw name="Verify Screen Content" library="common">
 <arguments>
-<arg>${fk_no}</arg>
-<arg>${no}</arg>
+<arg>${Home}</arg>
 </arguments>
-<msg timestamp="20200830 23:24:56.746" level="INFO">Typing text '9944313864' into text field 'id=com.flipkart.android:id/mobileNo'</msg>
-<status status="PASS" starttime="20200830 23:24:56.744" endtime="20200830 23:24:57.086"></status>
-</kw>
-<kw name="Click Text" library="AppiumLibrary">
-<doc>Click text identified by ``text``.</doc>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
 <arguments>
-<arg>${fk_sign}</arg>
+<arg>${ExpectedContent}</arg>
+<arg>timeout=30s</arg>
 </arguments>
-<status status="PASS" starttime="20200830 23:24:57.086" endtime="20200830 23:24:58.385"></status>
+<status status="PASS" starttime="20210714 19:39:16.979" endtime="20210714 19:39:18.278"></status>
 </kw>
-<status status="PASS" starttime="20200830 23:24:48.741" endtime="20200830 23:24:58.386"></status>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${ExpectedContent}</arg>
+</arguments>
+<msg timestamp="20210714 19:39:18.280" level="INFO">Home</msg>
+<status status="PASS" starttime="20210714 19:39:18.279" endtime="20210714 19:39:18.280"></status>
 </kw>
-<status status="PASS" starttime="20200830 23:24:31.868" endtime="20200830 23:24:58.386" critical="yes"></status>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Content Found</arg>
+</arguments>
+<msg timestamp="20210714 19:39:18.280" level="INFO">Content Found</msg>
+<status status="PASS" starttime="20210714 19:39:18.280" endtime="20210714 19:39:18.280"></status>
+</kw>
+<status status="PASS" starttime="20210714 19:39:16.978" endtime="20210714 19:39:18.281"></status>
+</kw>
+<status status="PASS" starttime="20210714 19:39:16.977" endtime="20210714 19:39:18.281"></status>
+</kw>
+<kw name="Log Source" library="AppiumLibrary">
+<doc>Logs and returns the entire html source of the current page or frame.</doc>
+<msg timestamp="20210714 19:39:19.069" level="INFO">&lt;?xml version='1.0' encoding='UTF-8' standalone='yes' ?&gt;
+&lt;hierarchy index="0" class="hierarchy" rotation="0" width="1080" height="1977"&gt;
+  &lt;android.widget.FrameLayout index="0" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,0][1080,1977]" displayed="true"&gt;
+    &lt;android.widget.LinearLayout index="0" package="com.follow.sakso5.stg" class="android.widget.LinearLayout" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,0][1080,1977]" displayed="true"&gt;
+      &lt;android.widget.FrameLayout index="0" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,171][1080,1977]" displayed="true"&gt;
+        &lt;android.widget.LinearLayout index="0" package="com.follow.sakso5.stg" class="android.widget.LinearLayout" text="" resource-id="com.follow.sakso5.stg:id/action_bar_root" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,171][1080,1977]" displayed="true"&gt;
+          &lt;android.widget.FrameLayout index="0" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="android:id/content" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,171][1080,1977]" displayed="true"&gt;
+            &lt;android.view.ViewGroup index="0" package="com.follow.sakso5.stg" class="android.view.ViewGroup" text="" resource-id="com.follow.sakso5.stg:id/main_container" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,171][1080,1977]" displayed="true"&gt;
+              &lt;android.widget.FrameLayout index="0" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/browser_container" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,171][1080,1977]" displayed="true" /&gt;
+              &lt;android.widget.FrameLayout index="1" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/user_overlay_container" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,171][1080,1977]" displayed="true" /&gt;
+              &lt;android.widget.FrameLayout index="2" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/section_overlay_container" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,171][1080,1977]" displayed="true" /&gt;
+              &lt;android.widget.FrameLayout index="3" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/container" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,171][1080,1977]" displayed="true"&gt;
+                &lt;androidx.drawerlayout.widget.DrawerLayout index="0" package="com.follow.sakso5.stg" class="androidx.drawerlayout.widget.DrawerLayout" text="" resource-id="com.follow.sakso5.stg:id/drawer_layout" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,171][1080,1977]" displayed="true"&gt;
+                  &lt;android.view.ViewGroup index="0" package="com.follow.sakso5.stg" class="android.view.ViewGroup" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,171][1080,1977]" displayed="true"&gt;
+                    &lt;android.widget.FrameLayout index="0" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/navbar_container" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,171][1080,325]" displayed="true"&gt;
+                      &lt;android.view.ViewGroup index="0" package="com.follow.sakso5.stg" class="android.view.ViewGroup" text="" resource-id="com.follow.sakso5.stg:id/navbar" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,171][1080,325]" displayed="true"&gt;
+                        &lt;android.widget.FrameLayout index="1" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/navbar_image_title_container" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[114,171][966,325]" displayed="true"&gt;
+                          &lt;android.widget.ImageView index="0" package="com.follow.sakso5.stg" class="android.widget.ImageView" text="" content-desc="Title image" resource-id="com.follow.sakso5.stg:id/navbar_image_title" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[402,200][677,296]" displayed="true" /&gt;
+                        &lt;/android.widget.FrameLayout&gt;
+                        &lt;android.widget.LinearLayout index="2" package="com.follow.sakso5.stg" class="android.widget.LinearLayout" text="" resource-id="com.follow.sakso5.stg:id/rightButtonsContainer" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[966,171][1034,325]" displayed="true"&gt;
+                          &lt;android.widget.FrameLayout index="0" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[966,214][1034,282]" displayed="true"&gt;
+                            &lt;android.widget.ImageView index="0" package="com.follow.sakso5.stg" class="android.widget.ImageView" text="" content-desc="Navbar button" resource-id="com.follow.sakso5.stg:id/button_image" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[966,214][1034,282]" displayed="true" /&gt;
+                          &lt;/android.widget.FrameLayout&gt;
+                        &lt;/android.widget.LinearLayout&gt;
+                      &lt;/android.view.ViewGroup&gt;
+                    &lt;/android.widget.FrameLayout&gt;
+                    &lt;android.view.View index="1" package="com.follow.sakso5.stg" class="android.view.View" text="" resource-id="com.follow.sakso5.stg:id/navbar_bottom_border" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,323][1080,325]" displayed="true" /&gt;
+                    &lt;android.widget.FrameLayout index="2" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/navbar_webview_container" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,325][1080,1977]" displayed="true"&gt;
+                      &lt;android.view.ViewGroup index="0" package="com.follow.sakso5.stg" class="android.view.ViewGroup" text="" resource-id="com.follow.sakso5.stg:id/pull_to_refresh" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,325][1080,1977]" displayed="true"&gt;
+                        &lt;android.webkit.WebView index="0" package="com.follow.sakso5.stg" class="android.webkit.WebView" text="" resource-id="com.follow.sakso5.stg:id/webView" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,325][1080,1977]" displayed="true" /&gt;
+                      &lt;/android.view.ViewGroup&gt;
+                    &lt;/android.widget.FrameLayout&gt;
+                    &lt;android.widget.LinearLayout index="3" package="com.follow.sakso5.stg" class="android.widget.LinearLayout" text="" resource-id="com.follow.sakso5.stg:id/feature_container_top_left" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,325][44,369]" displayed="true" /&gt;
+                    &lt;android.widget.LinearLayout index="4" package="com.follow.sakso5.stg" class="android.widget.LinearLayout" text="" resource-id="com.follow.sakso5.stg:id/feature_container_top_right" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1036,325][1080,369]" displayed="true" /&gt;
+                    &lt;android.widget.LinearLayout index="5" package="com.follow.sakso5.stg" class="android.widget.LinearLayout" text="" resource-id="com.follow.sakso5.stg:id/feature_container_bottom_left" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,1950][44,1977]" displayed="true" /&gt;
+                    &lt;android.widget.LinearLayout index="6" package="com.follow.sakso5.stg" class="android.widget.LinearLayout" text="" resource-id="com.follow.sakso5.stg:id/feature_container_bottom_right" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[1036,1950][1080,1977]" displayed="true" /&gt;
+                  &lt;/android.view.ViewGroup&gt;
+                &lt;/androidx.drawerlayout.widget.DrawerLayout&gt;
+              &lt;/android.widget.FrameLayout&gt;
+              &lt;android.widget.FrameLayout index="4" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/bottomContainer" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,1994][1080,2148]" displayed="true"&gt;
+                &lt;android.widget.FrameLayout index="0" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/tabBar" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,1994][1080,2148]" displayed="true"&gt;
+                  &lt;android.view.View index="0" package="com.follow.sakso5.stg" class="android.view.View" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,1994][1080,2148]" displayed="true" /&gt;
+                  &lt;android.widget.LinearLayout index="1" package="com.follow.sakso5.stg" class="android.widget.LinearLayout" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,1994][1080,2148]" displayed="true"&gt;
+                    &lt;android.widget.FrameLayout index="0" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/bottom_navigation_container" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,1994][216,2148]" displayed="true"&gt;
+                      &lt;android.widget.ImageView index="0" package="com.follow.sakso5.stg" class="android.widget.ImageView" text="" resource-id="com.follow.sakso5.stg:id/bottom_navigation_item_icon" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="true" bounds="[75,2010][141,2076]" displayed="true" /&gt;
+                      &lt;android.widget.TextView index="2" package="com.follow.sakso5.stg" class="android.widget.TextView" text="Home" resource-id="com.follow.sakso5.stg:id/bottom_navigation_item_title" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,2085][216,2129]" displayed="true" /&gt;
+                    &lt;/android.widget.FrameLayout&gt;
+                    &lt;android.widget.FrameLayout index="1" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/bottom_navigation_container" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[216,1994][432,2148]" displayed="true"&gt;
+                      &lt;android.widget.ImageView index="0" package="com.follow.sakso5.stg" class="android.widget.ImageView" text="" resource-id="com.follow.sakso5.stg:id/bottom_navigation_item_icon" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[291,2016][357,2082]" displayed="true" /&gt;
+                      &lt;android.widget.TextView index="2" package="com.follow.sakso5.stg" class="android.widget.TextView" text="Shop" resource-id="com.follow.sakso5.stg:id/bottom_navigation_item_title" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[216,2085][432,2129]" displayed="true" /&gt;
+                    &lt;/android.widget.FrameLayout&gt;
+                    &lt;android.widget.FrameLayout index="2" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/bottom_navigation_container" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[432,1994][648,2148]" displayed="true"&gt;
+                      &lt;android.widget.ImageView index="0" package="com.follow.sakso5.stg" class="android.widget.ImageView" text="" resource-id="com.follow.sakso5.stg:id/bottom_navigation_item_icon" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[507,2016][573,2082]" displayed="true" /&gt;
+                      &lt;android.widget.TextView index="2" package="com.follow.sakso5.stg" class="android.widget.TextView" text="Search" resource-id="com.follow.sakso5.stg:id/bottom_navigation_item_title" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[432,2085][648,2129]" displayed="true" /&gt;
+                    &lt;/android.widget.FrameLayout&gt;
+                    &lt;android.widget.FrameLayout index="3" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/bottom_navigation_container" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[648,1994][864,2148]" displayed="true"&gt;
+                      &lt;android.widget.ImageView index="0" package="com.follow.sakso5.stg" class="android.widget.ImageView" text="" resource-id="com.follow.sakso5.stg:id/bottom_navigation_item_icon" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[723,2016][789,2082]" displayed="true" /&gt;
+                      &lt;android.widget.TextView index="2" package="com.follow.sakso5.stg" class="android.widget.TextView" text="Account" resource-id="com.follow.sakso5.stg:id/bottom_navigation_item_title" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[648,2085][864,2129]" displayed="true" /&gt;
+                    &lt;/android.widget.FrameLayout&gt;
+                    &lt;android.widget.FrameLayout index="4" package="com.follow.sakso5.stg" class="android.widget.FrameLayout" text="" resource-id="com.follow.sakso5.stg:id/bottom_navigation_container" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[864,1994][1080,2148]" displayed="true"&gt;
+                      &lt;android.widget.ImageView index="0" package="com.follow.sakso5.stg" class="android.widget.ImageView" text="" resource-id="com.follow.sakso5.stg:id/bottom_navigation_item_icon" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[939,2016][1005,2082]" displayed="true" /&gt;
+                      &lt;android.widget.TextView index="1" package="com.follow.sakso5.stg" class="android.widget.TextView" text="0" resource-id="com.follow.sakso5.stg:id/bottom_navigation_notification" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[994,2005][1038,2049]" displayed="true" /&gt;
+                      &lt;android.widget.TextView index="2" package="com.follow.sakso5.stg" class="android.widget.TextView" text="Bag" resource-id="com.follow.sakso5.stg:id/bottom_navigation_item_title" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[864,2085][1080,2129]" displayed="true" /&gt;
+                    &lt;/android.widget.FrameLayout&gt;
+                  &lt;/android.widget.LinearLayout&gt;
+                &lt;/android.widget.FrameLayout&gt;
+              &lt;/android.widget.FrameLayout&gt;
+            &lt;/android.view.ViewGroup&gt;
+          &lt;/android.widget.FrameLayout&gt;
+        &lt;/android.widget.LinearLayout&gt;
+      &lt;/android.widget.FrameLayout&gt;
+    &lt;/android.widget.LinearLayout&gt;
+  &lt;/android.widget.FrameLayout&gt;
+&lt;/hierarchy&gt;</msg>
+<status status="PASS" starttime="20210714 19:39:18.282" endtime="20210714 19:39:19.069"></status>
+</kw>
+<tags>
+<tag>sanity</tag>
+</tags>
+<status status="PASS" starttime="20210714 19:38:34.687" endtime="20210714 19:39:19.070" critical="yes"></status>
 </test>
-<status status="PASS" starttime="20200830 23:24:31.761" endtime="20200830 23:24:58.387"></status>
+<status status="PASS" starttime="20210714 19:38:34.456" endtime="20210714 19:39:19.072"></status>
 </suite>
-<status status="PASS" starttime="20200830 23:24:31.739" endtime="20200830 23:24:58.391"></status>
+<status status="PASS" starttime="20210714 19:38:34.427" endtime="20210714 19:39:19.075"></status>
 </suite>
 <statistics>
 <total>
@@ -61,6 +167,7 @@ Please check https://github.com/appium/appium/blob/master/docs/en/writing-runnin
 <stat pass="1" fail="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0">sanity</stat>
 </tag>
 <suite>
 <stat pass="1" fail="0" id="s1" name="Tests">Tests</stat>

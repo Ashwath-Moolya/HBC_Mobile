@@ -1,57 +1,27 @@
 *** Keywords ***
 
-User is allowed to launch Flipkart app
-    Open Application    ${server}    platformName=${platform}    platformVersion=${platform_version}    deviceName=${device}    automationName=${appium}    appActivity=${app_activity}    appPackage=${app_package}    uiautomator2ServerInstallTimeout=50000
-    sleep  10s
-    Login to flipkart
-#app=${apkPath}    appActivity=${app_activity}    appPackage=${app_package}
+User is allowed to launch hbc app
+    #Open Application  ${server}  platformName=${pltname}  platformVersion=${versn}  deviceName=${device}  app=${apkPath}  uiautomator2ServerInstallTimeout=100000
+    Open Application  ${server}  platformName=${platform}  platformVersion=${platform_version}  deviceName=${device}  automationName=${appium}  appActivity=${app_activity}  appPackage=${app_package}  appWaitDuration=50000  appWaitForLaunch=true
+    Log to Console  Launched hbc
 
-Launch the Application
-    Launch Application
-    Login to flipkart
-
-Login to flipkart
-    sleep  3s
-    Click Element  ${mobile_element}
-    sleep  3s
-    Input Text  ${mobile_element}  ${mobile}
-    sleep  3s
-    Click Text  ${SignUp}
-    sleep  3s
-    Input Text  ${password_elem}  ${password}
-    sleep  3s
-    Click Text  ${signin}
+Verify hbc home page
+    Verify Screen Content  ${Home}
 
 Verify Screen Element
     [Arguments]    ${ExpectedElement}
-    sleep  4s
-    Wait Until Element Is Visible  ${ExpectedElement}
-    Log to Console  ${ExpectedElement}
-    Log to Console  Page Found
+    Wait Until Element Is Visible  ${ExpectedElement}  timeout=30s
+    Log  ${ExpectedElement}
+    Log  Page Found
 
 Verify Screen Content
     [Arguments]    ${ExpectedContent}
-    sleep  4s
-    Wait Until Page Contains  ${ExpectedContent}
-    Log to Console  ${ExpectedContent}
-    Log to Console  Content Found
-
-Go to Home Menu
-    Verify Screen Element  ${home_page}
-    Click Element  ${menu}
-
-User adds the desired product to the cart successfully
-    sleep  4s
-    Click Text  ${add_kart}
-    sleep  4s
-    Click Element  ${close_freq}
-    sleep  4s
-    #Click Element  ${pick_address}
-    Click Text  ${go_kart}
-    sleep  4s
+    Wait Until Page Contains  ${ExpectedContent}  timeout=30s
+    Log  ${ExpectedContent}
+    Log  Content Found
     
-Quit flipkart Application
+Quit hbc Application
     Quit Application
 
-Close flipkart Application
+Close hbc Application
     Close Application
