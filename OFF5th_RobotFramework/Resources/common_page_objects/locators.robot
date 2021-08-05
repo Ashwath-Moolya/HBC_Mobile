@@ -6,11 +6,13 @@
 
 
 #Setup settings
-${REMOTE_URL}     http://localhost:4723/wd/hub
+${REMOTE_URL}     http://localhost:4725/wd/hub
 ${PLATFORM_NAME}    android
-${PLATFORM_VERSION}    9.0
+${PLATFORM_VERSION}    11.0
+#${DEVICE_NAME}    9B181FFBA0001V
 ${DEVICE_NAME}    emulator-5554
-${APP}  /Nightwatch/SaksOff5thStage.apk
+#${DEVICE_NAME}    f28140b7
+${APP}  /Users/Admin/Downloads/SaksOff5thStage (3).apk
 
 #HomePage
 ${searchlink} =  xpath=//android.widget.TextView[@text="Search"]
@@ -25,7 +27,7 @@ ${Password} =  Test@1234
 ${signInButton} =  xpath=//android.widget.TextView[@text="SIGN IN"]
 ${progressbar} =  class=android.widget.ProgressBar
 # ${var} = xpath=//<xpath>
-${header search box} =  xpath=//android.widget.EditText[class="android.widget.EditText"]
+${header search box} =  xpath=//android.widget.EditText[@class="android.widget.EditText"]
 ${searchIcon} =  class=android.widget.Button
 #${productid} =  Dress
 ${bag} =  xpath=//android.widget.TextView[@text="Bag"]
@@ -34,3 +36,5 @@ ${shop} =  xpath=//android.widget.FrameLayout[2]/android.widget.TextView[@text="
 ${emailTextfield} =  xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[4]/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View[4]/android.view.View/android.view.View[2]/android.view.View/android.widget.EditText
 ${homepage} =  id=com.follow.sakso5.stg:id/webView
 
+${close} =  xpath=//android.view.View[@resource-id="consent-close"]
+${email_field} =  xpath=//android.widget.EditText[@class="android.widget.EditText"]

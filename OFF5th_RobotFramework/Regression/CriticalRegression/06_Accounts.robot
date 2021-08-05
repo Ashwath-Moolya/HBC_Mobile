@@ -20,9 +20,3 @@ OFA_31 - Account - Create new account with valid details.
     And Create new account with valid credentials
     And Verify Screen Displays text  ACCOUNT MENU
     And Verify Screen Displays text  ${accountfname}
-
-
-# And Navigate to My Account "PROFILE" Page
-# Then verify "Profile Page" page elements are displayed
-# And Verify the user details for newly created user in profile page
-# And Verify the Email Preferences section when OFF5 options are not selected
