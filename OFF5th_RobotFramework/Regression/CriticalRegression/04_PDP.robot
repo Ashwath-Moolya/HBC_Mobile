@@ -23,4 +23,7 @@ Search for a product by
     Click Text  Bag
     Verify Page Contains Text  Shopping Bag
 
+
+    
+
    
