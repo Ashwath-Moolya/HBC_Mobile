@@ -25,5 +25,4 @@ Go to HomePage (Promotional Banner Input)
     Verify Page Contains Text  THANK YOU
     Log Source
     Capture Page Screenshot  thankyou.png
-    Close Application
-    
+    Close Application    

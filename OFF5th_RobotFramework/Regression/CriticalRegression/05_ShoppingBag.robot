@@ -1,14 +1,27 @@
 *** Settings ***
-Library    AppiumLibrary 
-#Locator file path
-Resource  ../../Resources/common_page_objects/locators.robot  
-Resource  ../../Resources/common_page_objects/login.robot
-#Common functions 
 Resource  ../../Resources/common_definitions/commonsfcc.robot
-Resource  ../../Resources/common_definitions/account.robot
-#TestData
-Resource  ../../Resources/data/global.robot
 
 *** Test Cases ***
-Test case name 
+    
+Add a product to Shopping Bag
+    [Tags]  SB_TC01
     Given I am on the app
+    And I type data into text field  ${product_term1}  ${header search box}
+    Sleep  10s
+    # And I Scroll down to text  Cole Haan
+    # Click Text  Cole Haan
+    # And I Scroll down to text  Color
+    # Sleep  10s
+    # Log Source
+    # #Click Element  xpath=//android.widget.RadioButton/android.widget.RadioButton[1]/android.widget.RadioButton[1]
+    # #Click Element  xpath=//android.widget.Button/android.widget.Button[1]/android.widget.Button[1]
+    # Click Text  Select Color COGNAC
+    # Sleep  10s
+    # Click Element  xpath=//android.view.View[@content-desc="32"]
+    # Sleep  10s
+    # Click Text  ADD TO BAG
+    # Sleep  15s
+    # Click Text  Bag
+    # Sleep  15s
+    # Capture Page Screenshot  sb01.png
+    Log Source

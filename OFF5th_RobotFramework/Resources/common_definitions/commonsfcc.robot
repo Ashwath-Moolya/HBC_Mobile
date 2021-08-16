@@ -4,7 +4,7 @@ Library    String
 Resource  ../../Resources/common_page_objects/locators.robot   
 Resource  ../../Resources/Data/Testdata.robot
 Resource  ../../Resources/common_page_objects/homepage.robot
-Resource  ../../Resources/common_page_objects/productsearch.robot
+#Resource  ../../Resources/common_page_objects/productsearch.robot
 
 *** Keywords ***
 
@@ -69,54 +69,23 @@ Email subcription
     Click Element   ${shop}
     Input Text   ${emailTextfield}      ${ValidEmail}
 
-I input "${product_ID}" into this "${header search box}" field
-    Wait Until Element is Visible   ${homepage}     timeout=${globalmaxsleep}
+I type data into text field
+    [Arguments]  ${text}  ${element}
+    Wait Until Page Contains  Search
     Click Text  Search
-    Wait Until Element is Visible    ${header search box}       timeout=${globaltimeout}
-    Click Element   ${header search box}
-    Input Text   ${header search box}      ${product_ID}
-    #Press Keycode   84
-    Press Keycode   4
-    Verify Page Contains Text  V-Neck Cropped Cardigan
-    Swipe By Percent  50  90  50  10    
+    Wait Until Element is Visible    ${element}       timeout=${globaltimeout}
+    Click Element   ${element}
+    Input Text   ${element}      ${text}
+    #Press Keycode   4
     
-
-I type "${brand_name}" into this "${header search box}" field
-    Wait Until Element is Visible   ${homepage}     timeout=${globalmaxsleep}
+I enter data into text field
+    [Arguments]  ${text}  ${element}
+    Wait Until Page Contains  Search
     Click Text  Search
-    Wait Until Element is Visible    ${header search box}       timeout=${globaltimeout}
-    Click Element   ${header search box}
-    Input Text   ${header search box}      ${brand_name}
-    Press Keycode  4
-    Sleep  20s
-    Swipe By Percent  50  90  50  20  
-    
-    Log Source
-
-I give "${product_term}" into this "${header search box}" field
-    Wait Until Element is Visible   ${homepage}     timeout=${globalmaxsleep}
-    Click Text  Search
-    Wait Until Element is Visible    ${header search box}       timeout=${globaltimeout}
-    Click Element   ${header search box}
-    Input Text   ${header search box}      ${product_term}
-    Press Keycode   84
-
-I enter "${wild_card}" into this "${header search box}" field
-    Wait Until Element is Visible   ${homepage}     timeout=${globalmaxsleep}
-    Click Text  Search
-    Wait Until Element is Visible    ${header search box}       timeout=${globaltimeout}
-    Click Element   ${header search box}
-    Input Text   ${header search box}      ${wild_card}
-
-#I click on Element
-    #[Arguments]  ${Element}
-    #Wait Until Page Contains    ${Element}     timeout=${globaltimeout}
-    #Click Element  ${Element}
-
-#I scroll down the page
-    #sleep   ${globalmaxsleep}
-    #Swipe By Percent  50  90  50  10
-    #sleep   ${globalmaxsleep}
+    Wait Until Element is Visible    ${element}      timeout=${globaltimeout}
+    Click Element   ${element}
+    Input Text   ${element}  ${wild_card}
+    #Wait Until Page Contains  Sorry  timeout=${globaltimeout}
 
 
 I click on Text
@@ -136,3 +105,25 @@ Verify page doesnot contain Element
     [Arguments]  ${Element}
     Wait Until Page Does Not Contain Element  ${Element}  timeout=${globalmaxsleep}
 
+
+I Scroll down to text
+    [Arguments]  ${text}
+    FOR  ${i}  IN RANGE  1  100
+        ${pass} =  Run Keyword And Return Status  Wait Until Page Contains  ${text}  timeout=${globalminsleep}
+        Exit For Loop If  '${pass}' == 'True'
+        Swipe By Percent  50  80  50  40
+    END
+
+I Type into the product search field
+    Wait Until Element is Visible   ${homepage}     timeout=${globalmaxsleep}
+    Click Text  Search
+    Wait Until Element is Visible    ${header search box}       timeout=${globaltimeout}
+    Click Element   ${header search box}
+    Input Text   ${header search box}      ${product_ID}
+    Press Keycode   4
+
+Press enter key on device keypad
+    Sleep  15s
+    Press Keycode  115
+    Sleep  5s
+    Press Keycode  66

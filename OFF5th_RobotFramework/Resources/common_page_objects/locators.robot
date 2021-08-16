@@ -8,11 +8,11 @@
 #Setup settings
 ${REMOTE_URL}     http://localhost:4725/wd/hub
 ${PLATFORM_NAME}    android
-${PLATFORM_VERSION}    11.0
-#${DEVICE_NAME}    9B181FFBA0001V
-${DEVICE_NAME}    emulator-5554
+${PLATFORM_VERSION}    10.0
+${DEVICE_NAME}    9B181FFBA0001V
+#${DEVICE_NAME}    emulator-5554
 #${DEVICE_NAME}    f28140b7
-${APP}  /Users/Admin/Downloads/SaksOff5thStage (3).apk
+${APP}  /Users/Admin/Downloads/SaksOff5thStage (4).apk
 
 #HomePage
 ${searchlink} =  xpath=//android.widget.TextView[@text="Search"]
@@ -38,3 +38,5 @@ ${homepage} =  id=com.follow.sakso5.stg:id/webView
 
 ${close} =  xpath=//android.view.View[@resource-id="consent-close"]
 ${email_field} =  xpath=//android.widget.EditText[@class="android.widget.EditText"]
+
+${lens_icons} =  xpath=//android.widget.Button[@class="android.widget.Button"]
