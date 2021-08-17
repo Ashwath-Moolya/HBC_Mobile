@@ -76,7 +76,8 @@ I type data into text field
     Wait Until Element is Visible    ${element}       timeout=${globaltimeout}
     Click Element   ${element}
     Input Text   ${element}      ${text}
-    #Press Keycode   4
+    #Sleep  20s
+    Press Keycode   4
     
 I enter data into text field
     [Arguments]  ${text}  ${element}

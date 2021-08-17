@@ -21,4 +21,6 @@ Search for a product by
     Click Text  ADD TO BAG
     Sleep  10s
     Click Text  Bag
-    Verify Page Contains Text  Shopping Bag  
+    Verify Page Contains Text  Shopping Bag
+
+    
