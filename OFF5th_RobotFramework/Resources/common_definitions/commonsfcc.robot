@@ -15,12 +15,12 @@ I am on the app
          ...    deviceName=${DEVICE_NAME}
          ...    automationName=UiAutomator2
       #   ...    newCommandTimeout=2500
-       #  ...    appActivity=com.follow.saksoff5th.MainActivity
+       ...    appActivity=com.follow.saksoff5th.MainActivity
          #...    appPackage=com.follow.sakso5.prod
-       #  ...    appPackage=com.follow.sakso5.stg
+            ...    appPackage=com.follow.sakso5.stg
          ...    appWaitDuration=150000  
          ...    appWaitForLaunch=true
-         ...    app=${APP}
+        # ...    app=${APP}
    # sleep  60s
 
 Verify Screen Element
@@ -76,7 +76,6 @@ I type data into text field
     Wait Until Element is Visible    ${element}       timeout=${globaltimeout}
     Click Element   ${element}
     Input Text   ${element}      ${text}
-    #Sleep  20s
     Press Keycode   4
     
 I enter data into text field
@@ -135,21 +134,57 @@ Return status if text visibile
     Log to Console  ${pass}
     [Return]  ${pass}
     
-Select available color and size
+Select available color and sizes
     ${color_count}  Get Matching Xpath Count  //android.widget.RadioButton[contains(@text, "Select Color")]
     ${size_count}  Get Matching Xpath Count  //android.view.View[@text='Size']/android.view.View[2]/android.widget.RadioButton
     Log to Console  ${color_count}
     Log to Console  ${size_count}
-    FOR  ${i}  IN RANGE  1  ${color_count}
+
+    Run Keyword If  '${color_count}' == '0'  Select available Size for product  ${size_count}
+        ...  ELSE IF  '${size_count}' == '0'  Select available color for product  ${color_count}
+        ...  ELSE  Select both available color and size  ${color_count}  ${size_count}
+
+Select available color for product
+    [Arguments]    ${colorlen}
+    Log to Console  EXECUTING IF
+    FOR  ${i}  IN RANGE  1  ${colorlen}
         Click Element  xpath=(//android.widget.RadioButton[contains(@text, "Select Color")])[${i}]
         Log to Console  ${i}
         Verify Screen Contains Element  xpath=(//android.widget.RadioButton[contains(@text, "Select Color")])[${i}]
         Sleep  5s
-        Select available Size for product  ${size_count}
+        ${text_stat} =  Return status if text visibile  ADD TO BAG
+        Log to Console  ${text_stat}
+        Set Suite Variable  ${text_stat}  ${text_stat}
         Exit For Loop If  "${text_stat}" == "True"
     END
 
 Select available Size for product
+    [Arguments]    ${sizeLen}
+    Log to Console  EXECUTING IF
+    FOR  ${j}  IN RANGE  1  ${sizeLen}
+            Log to Console  ${j}
+            Verify Screen Contains Element  xpath=(//android.view.View[@text='Size']/android.view.View[2]/android.widget.RadioButton)[${j}]
+            Click Element  xpath=(//android.view.View[@text='Size']/android.view.View[2]/android.widget.RadioButton)[${j}]
+            Sleep  5s
+            ${text_stat} =  Return status if text visibile  ADD TO BAG
+            Log to Console  ${text_stat}
+            Set Suite Variable  ${text_stat}  ${text_stat} 
+            Exit For Loop If  "${text_stat}" == "True"
+    END
+
+Select both available color and size
+    [Arguments]     ${colorc}  ${sizec}
+    Log to Console  EXECUTING ELSE
+    FOR  ${i}  IN RANGE  1  ${colorc}
+        Click Element  xpath=(//android.widget.RadioButton[contains(@text, "Select Color")])[${i}]
+        Log to Console  ${i}
+        Verify Screen Contains Element  xpath=(//android.widget.RadioButton[contains(@text, "Select Color")])[${i}]
+        Sleep  5s
+        Select correct available Size for product  ${sizec}
+        Exit For Loop If  "${text_stat}" == "True"
+    END
+
+Select correct available Size for product
     [Arguments]    ${sizeLen}
     FOR  ${j}  IN RANGE  1  ${sizeLen}
             Log to Console  ${j}
