@@ -1,0 +1,7 @@
+# IDE Specific
+.DS_Store
+.vscode/
+.idea/
+hbc7.apk
+hbc9.apk
+Results/

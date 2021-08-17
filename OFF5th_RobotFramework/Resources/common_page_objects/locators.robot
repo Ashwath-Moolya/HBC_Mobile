@@ -6,13 +6,13 @@
 
 
 #Setup settings
-${REMOTE_URL}     http://localhost:4725/wd/hub
+${REMOTE_URL}     http://localhost:4723/wd/hub
 ${PLATFORM_NAME}    android
-${PLATFORM_VERSION}    10.0
-${DEVICE_NAME}    9B181FFBA0001V
+${PLATFORM_VERSION}    11.0
+${DEVICE_NAME}    RZ8R4011CWN
 #${DEVICE_NAME}    emulator-5554
 #${DEVICE_NAME}    f28140b7
-${APP}  /Users/Admin/Downloads/SaksOff5thStage (4).apk
+${APP}  /Users/apple/HBC_RF_Mobile/SaksOff5thStageNew.apk
 
 #HomePage
 ${searchlink} =  xpath=//android.widget.TextView[@text="Search"]
