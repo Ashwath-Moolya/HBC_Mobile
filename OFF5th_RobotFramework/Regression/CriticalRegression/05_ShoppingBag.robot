@@ -33,20 +33,35 @@ Search for a product by iteration
     Click Element  xpath=(//android.view.View[@content-desc='product images'])[1]
     Sleep  20s
     And I Scroll down to text  Size
-    And Select available color and sizes
-    Click Text  ADD TO BAG
-    And Verify Page Contains Text  Shopping Bag
+    And I Select available color and sizes
+    And Click Text  ADD TO BAG 
+    Sleep  10s
     Log Source
+    Capture Page Screenshot  sb01.png
     
-    # #Sleep  10s
-    # Verify Screen Contains Element  xpath=(//android.widget.RadioButton[@class='android.widget.RadioButton'])[1]
+    # #Verify Page Contains Text  Shopping Bag 
+    
+    # Verify Page Contains Text  Increase quantity by one
+    # Click Text  Increase quantity by one
+    # Click Text  Increase quantity by one
+    # Sleep  20s
+    # #Get Text  xpath=//android.widget.EditText[@text='Current quantity']
+    # #Sleep  20s
+    # Click Text  Decrease quantity by one
+    # Sleep  10s
     # Log Source
-    # Click Element  xpath=(//android.widget.RadioButton[@class='android.widget.RadioButton'])[1]
-    # #Sleep  10s
-    # Verify Screen Contains Element  xpath=(//android.widget.RadioButton[@class='android.widget.RadioButton'])[4]
-    # Click Element  xpath=(//android.widget.RadioButton[@class='android.widget.RadioButton'])[4]
-    # Verify Page Contains Text  ADD TO BAG
-    # Click Text  ADD TO BAG
-    # Verify Page Contains Text  Bag
-    # Click Text  Bag
-    # Verify Page Contains Text  Shopping Bag 
+    # Capture Page Screenshot  sb01.png
+
+Search for a product by iteration
+    [Tags]  SB_TC03
+    Given I am on the app
+    And I type data into text field  ${product_term2}  ${header search box}
+    Press enter key on device keypad
+    Verify Screen Contains Element  xpath=(//android.view.View[@content-desc='product images'])[1]
+    Click Element  xpath=(//android.view.View[@content-desc='product images'])[1]
+    When I Scroll down to text  Size
+    And I Select available color and sizes
+    And I Add product to Bag
+    When I Remove product from Bag
+    Log Source
+    Capture Page Screenshot  sb03.png

@@ -29,7 +29,7 @@ Verify Screen Element
 
 Verify Screen Contains Element
     [Arguments]     ${ExpectedElement}
-    Wait Until Page Contains Element    ${ExpectedElement}      timeout=${globaltimeout}
+    Wait Until Page Contains Element    ${ExpectedElement}      timeout=${globalmaxsleep}
 
 Verify Page Contains Text
     [Arguments]  ${ExpectedText}
@@ -109,7 +109,7 @@ Verify page doesnot contain Element
 I Scroll down to text
     [Arguments]  ${text}
     FOR  ${i}  IN RANGE  1  100
-        ${pass} =  Run Keyword And Return Status  Wait Until Page Contains  ${text}  timeout=${globalminsleep}
+        ${pass} =  Run Keyword And Return Status  Wait Until Page Contains  ${text}  timeout=${globalmaxsleep}
         Exit For Loop If  '${pass}' == 'True'
         Swipe By Percent  50  80  50  40
     END
@@ -128,13 +128,26 @@ Press enter key on device keypad
     Sleep  5s
     Press Keycode  66
 
+I Add product to Bag
+    And Click Text  ADD TO BAG
+    Sleep  10s
+    #Verify Page Contains Text  CHECKOUT
+    Click Text  Bag
+
+I Remove product from Bag
+    Verify Page Contains Text  Remove product
+    Click Text  Remove product
+    Sleep  25s
+    #Verify Page Contains Text  Shopping Bag (0)
+    #Wait Until Element is Visible  xpath=//android.widget.Button[@class="android.widget.Button"]  timeout=${globalmaxsleep}
+
 Return status if text visibile
     [Arguments]  ${text_exp}
     ${pass} =  Run Keyword And Return Status  Verify Page Contains Text   ${text_exp}
     Log to Console  ${pass}
     [Return]  ${pass}
     
-Select available color and sizes
+I Select available color and sizes
     ${color_count}  Get Matching Xpath Count  //android.widget.RadioButton[contains(@text, "Select Color")]
     ${size_count}  Get Matching Xpath Count  //android.view.View[@text='Size']/android.view.View[2]/android.widget.RadioButton
     Log to Console  ${color_count}
@@ -196,3 +209,4 @@ Select correct available Size for product
             Set Suite Variable  ${text_stat}  ${text_stat} 
             Exit For Loop If  "${text_stat}" == "True"
     END
+

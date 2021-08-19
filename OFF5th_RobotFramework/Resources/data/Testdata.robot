@@ -12,6 +12,7 @@ ${brand_name} =  Gucci
 
 ${product_term} =  Shoes
 ${product_term1} =  belts
+${product_term2} =  shirt
 ${search1} =  shirt
 
 ${wild_card} =  ***
