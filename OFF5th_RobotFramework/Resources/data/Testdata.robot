@@ -10,9 +10,10 @@ ${product_ID} =  0400013701703
 
 ${brand_name} =  Gucci
 
-${product_term} =  Shoes
-${product_term1} =  belts
+${product_term} =  Pant
+${product_term1} =  tracks
 ${product_term2} =  shirt
+#${product_term} =  Pant
 ${search1} =  shirt
 
 ${wild_card} =  ***
@@ -21,4 +22,4 @@ ${brand_name} =  Gucci
 
 ${globaltimeout} =  90s
 ${globalmaxsleep} =  60s
-${globalminsleep} =  10s
+${globalminsleep} =  15s

@@ -4,6 +4,7 @@ Library    String
 Resource  ../../Resources/common_page_objects/locators.robot   
 Resource  ../../Resources/Data/Testdata.robot
 Resource  ../../Resources/common_page_objects/homepage.robot
+Resource  ../../Resources/common_page_objects/searchresultspage.robot
 #Resource  ../../Resources/common_page_objects/productsearch.robot
 
 *** Keywords ***
@@ -109,9 +110,9 @@ Verify page doesnot contain Element
 I Scroll down to text
     [Arguments]  ${text}
     FOR  ${i}  IN RANGE  1  100
-        ${pass} =  Run Keyword And Return Status  Wait Until Page Contains  ${text}  timeout=${globalmaxsleep}
+        ${pass} =  Run Keyword And Return Status  Wait Until Page Contains  ${text}  timeout=${globalminsleep}
         Exit For Loop If  '${pass}' == 'True'
-        Swipe By Percent  50  80  50  40
+        Swipe By Percent  50  80  50  25
     END
 
 I Type into the product search field
@@ -129,23 +130,53 @@ Press enter key on device keypad
     Press Keycode  66
 
 I Add product to Bag
+    Sleep  5s
     And Click Text  ADD TO BAG
     Sleep  10s
-    #Verify Page Contains Text  CHECKOUT
-    Click Text  Bag
+    
 
 I Remove product from Bag
-    Verify Page Contains Text  Remove product
+    Sleep  20s
+    #Verify Page Contains Text  Remove product
     Click Text  Remove product
-    Sleep  25s
-    #Verify Page Contains Text  Shopping Bag (0)
+    Sleep  10s
+    Verify Page Contains Text  Shopping Bag (0)
     #Wait Until Element is Visible  xpath=//android.widget.Button[@class="android.widget.Button"]  timeout=${globalmaxsleep}
+
+Increase the product quantity
+    Sleep  10s
+    Click Text  Increase quantity by one
+    Log Source
+    Verify Page Contains Text  Increase quantity by one
+    Sleep  10s
+    Click Text  Increase quantity by one
+    Sleep  10s
+    ${Acutal_quantity} =  Extract text from the app  xpath=//android.widget.EditText[@class="android.widget.EditText"]
+    Should Be Equal  ${Acutal_quantity}  3.0
+
+Decrease the product quantity
+    Sleep  10s
+    Click Text  Decrease quantity by one
+    Sleep  10s
+    ${Acutal_quantity} =  Extract text from the app  xpath=//android.widget.EditText[@class="android.widget.EditText"]
+    Should Be Equal  ${Acutal_quantity}  2.0
+
+Extract text from the app
+    [Arguments]  ${ExpectedElement}
+    Verify Screen Contains Element  ${ExpectedElement}
+    ${text} =  Get Text  ${ExpectedElement}
+    [Return]  ${text}
 
 Return status if text visibile
     [Arguments]  ${text_exp}
     ${pass} =  Run Keyword And Return Status  Verify Page Contains Text   ${text_exp}
     Log to Console  ${pass}
     [Return]  ${pass}
+
+Collect the first product details in plp
+    ${pname}  Get Text  ${productnameLocator}
+    Log To Console  ${pname}
+    Set Suite Variable  ${pname}  ${pname}
     
 I Select available color and sizes
     ${color_count}  Get Matching Xpath Count  //android.widget.RadioButton[contains(@text, "Select Color")]
@@ -178,7 +209,7 @@ Select available Size for product
             Log to Console  ${j}
             Verify Screen Contains Element  xpath=(//android.view.View[@text='Size']/android.view.View[2]/android.widget.RadioButton)[${j}]
             Click Element  xpath=(//android.view.View[@text='Size']/android.view.View[2]/android.widget.RadioButton)[${j}]
-            Sleep  5s
+            Sleep  15s
             ${text_stat} =  Return status if text visibile  ADD TO BAG
             Log to Console  ${text_stat}
             Set Suite Variable  ${text_stat}  ${text_stat} 
@@ -192,7 +223,7 @@ Select both available color and size
         Click Element  xpath=(//android.widget.RadioButton[contains(@text, "Select Color")])[${i}]
         Log to Console  ${i}
         Verify Screen Contains Element  xpath=(//android.widget.RadioButton[contains(@text, "Select Color")])[${i}]
-        Sleep  5s
+        Sleep  10s
         Select correct available Size for product  ${sizec}
         Exit For Loop If  "${text_stat}" == "True"
     END

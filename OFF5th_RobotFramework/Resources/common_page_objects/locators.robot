@@ -40,3 +40,4 @@ ${close} =  xpath=//android.view.View[@resource-id="consent-close"]
 ${email_field} =  xpath=//android.widget.EditText[@class="android.widget.EditText"]
 
 ${lens_icons} =  xpath=//android.widget.Button[@class="android.widget.Button"]
+
