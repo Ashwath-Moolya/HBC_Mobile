@@ -9,6 +9,7 @@ Search for a product by product ID
     Verify Page Contains Text  6MM Yoga Mat
     And I Scroll down to text  VIEW ALL
     Capture Page Screenshot  ps01.png
+    Close Application
     
 Search for a product by brand name
     [Tags]  PS_TC02
@@ -16,6 +17,7 @@ Search for a product by brand name
     And I type data into text field  ${brand_name}  ${header search box}
     And I Scroll down to text  VIEW ALL
     Capture Page Screenshot  ps02.png
+    Close Application
             
 Search for a product by product term
     [Tags]  PS_TC03
@@ -23,6 +25,7 @@ Search for a product by product term
     And I type data into text field  ${product_term}  ${header search box}
     And I Scroll down to text  VIEW ALL
     Capture Page Screenshot  ps03.png
+    Close Application
    
 Search for a product by wildcard '***'
     [Tags]  PS_TC04
@@ -32,5 +35,6 @@ Search for a product by wildcard '***'
     Verify Page Contains Text  Filter
     Verify Page Contains Text  "***"
     Capture Page Screenshot  ps04.png
-    Log Source
+    Close Application
+    
     

@@ -160,6 +160,7 @@ Decrease the product quantity
     Sleep  10s
     ${Acutal_quantity} =  Extract text from the app  xpath=//android.widget.EditText[@class="android.widget.EditText"]
     Should Be Equal  ${Acutal_quantity}  2.0
+    Sleep  10s
 
 Extract text from the app
     [Arguments]  ${ExpectedElement}

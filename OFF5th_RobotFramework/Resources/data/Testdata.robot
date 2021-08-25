@@ -22,4 +22,4 @@ ${brand_name} =  Gucci
 
 ${globaltimeout} =  90s
 ${globalmaxsleep} =  60s
-${globalminsleep} =  15s
+${globalminsleep} =  10s
